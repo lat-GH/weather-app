@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import './WeatherCard.js';
-import WeatherCard from './WeatherCard.js';
+import './components/WeatherCard.js';
+import WeatherCard from './components/WeatherCard.js';
 
 function App() {
   return (

@@ -49,3 +49,9 @@
   text-align: left;
   /* max-height: 100px; */
 }
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
