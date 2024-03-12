@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.wrapper {
+  width: fit-content;
+  max-width: 1000px;
+  height: fit-content;
+  border: 5px solid rgb(134, 133, 133);
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 30px;
+  background: whitesmoke;
+  text-align: left;
+  /* max-height: 100px; */
+}
