@@ -14,7 +14,7 @@ const WeatherCard = () => {
     let [weather_data, set_weather_data] = useState([]);
     let [today_data, set_today_data] = useState([]);
     let [yesterday_data, set_yesterday_data] = useState([]);
-    let warmer_or_colder = true;
+    let warmer_or_colder = -1;
 
     //calling the weather data api and storing results in the states above^^
     const query_weather_API = async (location) => {
@@ -57,6 +57,7 @@ const WeatherCard = () => {
 
         if(difference === 0){
             result = "the same as"
+            warmer_or_colder = 0
             return result
         }
         if(Math.abs(difference) < 3){
@@ -70,11 +71,13 @@ const WeatherCard = () => {
             result = result + ' colder than'
             //result.concat('colder') WHY DOESNT THIS WORK?
             console.log(result)
-            warmer_or_colder = true
+            warmer_or_colder = -1
+            console.log('warmer_or_colder = ' + warmer_or_colder)
         }
         else{
             result = result + ' warmer than'
-            warmer_or_colder = false
+            warmer_or_colder = 1
+            console.log('warmer_or_colder = ' + warmer_or_colder)
         }
 
         return result
@@ -91,8 +94,13 @@ const WeatherCard = () => {
                 <option value="Sydney">Sydney</option>
             </select>
             <h1>Weather for {curr_location} is </h1>
-            <h2 style={{ color: warmer_or_colder ? 'blue' : 'red'
+
+            <h2 style={{ 
+                color: (warmer_or_colder>0) ? 'red' 
+                : (warmer_or_colder==0) ? 'green'
+                : 'blue'
             }}>Feels {warmerORcolder_calculator()} yesterday</h2>
+
             <h2>{convert_to_Celcius(today_data.temp)} degrees</h2>
 
             
