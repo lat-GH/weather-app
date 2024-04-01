@@ -1,6 +1,11 @@
 import React from 'react';
 import clouds from "../icons/clouds.svg";
 import rain from "../icons/rain.svg";
+import snow from "../icons/snow.svg";
+import sun from "../icons/sun.svg";
+import wind from "../icons/wind.svg";
+import part_cloudy from "../icons/part_cloudy.svg";
+
 
 import { useEffect, useState} from 'react';
 import { Difference, X } from '@mui/icons-material';
@@ -97,14 +102,27 @@ const WeatherCard_02 = () => {
             case 'rain':
                 set_icon_svg(rain)
                 break;
-
+            case 'partly-cloudy-day':
+                set_icon_svg(part_cloudy)
+                break;
+            case 'wind':
+                set_icon_svg(wind)
+                break;
+            case 'cloudy':
+                set_icon_svg(clouds)
+                break;
+            case 'clear-day':
+                set_icon_svg(sun)
+                break;
+            case 'snow':
+                set_icon_svg(snow)
+                break;
             default:
                 set_icon_svg(clouds)
 
         }
 
     }
-
 
     //calling to update the states when the curre_location variable 
     //is updated and will trigger a rerender
