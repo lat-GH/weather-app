@@ -1,8 +1,9 @@
 import React from 'react';
 import clouds from "../icons/clouds.svg";
+import rain from "../icons/rain.svg";
 
 import { useEffect, useState} from 'react';
-import { Difference } from '@mui/icons-material';
+import { Difference, X } from '@mui/icons-material';
 
 
 //const API_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
@@ -20,6 +21,7 @@ const WeatherCard_02 = () => {
     //let [warmer_or_colder, set_warmerORcolder] = useState([0]);
     let [warmer_or_colder_str, set_warmerORcolder_str] = useState([]);
     let [temp_colour, set_tempColour] = useState(['green']);
+    let [icon_svg, set_icon_svg] = useState(clouds)
     
 
     //calling the weather data api and storing results in the states above^^
@@ -37,6 +39,7 @@ const WeatherCard_02 = () => {
         //set_weather_data(data)
         set_today_data(data.days[0])
         set_yesterday_data(data02.days[0])
+        //console.log("data.days[0].icon = "+data.days[0].icon)
         
     }; 
     
@@ -88,11 +91,27 @@ const WeatherCard_02 = () => {
         }
     }
 
+    const choose_weather_icon = (icon_data) => {
+        console.log("icon_data ="+icon_data)
+        switch(icon_data){
+            case 'rain':
+                set_icon_svg(rain)
+                break;
+
+            default:
+                set_icon_svg(clouds)
+
+        }
+
+    }
+
+
     //calling to update the states when the curre_location variable 
     //is updated and will trigger a rerender
     useEffect( () => { 
         query_weather_API(curr_location)
         warmerORcolder_calculator()
+        choose_weather_icon(today_data.icon)
     }, [curr_location]); 
 
     return(
@@ -109,7 +128,7 @@ const WeatherCard_02 = () => {
             <h2 style={{ textAlign: 'center' }}>{convert_to_Celcius(today_data.temp)} degrees</h2>
             
             <div className="image-container">
-                <img src={clouds} style={{ height: 80, width: 80}} alt="clouds icon"/>
+                <img src={icon_svg} style={{ height: 80, width: 80}} alt="clouds icon"/>
             </div>            
         </div>
     )
