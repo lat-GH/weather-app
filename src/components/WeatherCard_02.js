@@ -28,11 +28,16 @@ const WeatherCard_02 = () => {
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${curr_location}?unitGroup=us&include=days&${API_key}&contentType=json`)
         const data = await response.json()
         
+        const response02 = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${curr_location}/yesterday?unitGroup=us&${API_key}&contentType=json`)
+        const data02 = await response02.json()
+
+        console.log(data02)
         console.log(data)
         //console.log(data.days[0].temp)
         //set_weather_data(data)
-        set_yesterday_data(data.days[0])
-        set_today_data(data.days[1]) // ASSUMPTION for the sake of the exercise = today is actually tomorrow (because I cannot currently access historical data)
+        set_today_data(data.days[0])
+        set_yesterday_data(data02.days[0])
+        
     }; 
     
 
@@ -64,11 +69,11 @@ const WeatherCard_02 = () => {
         if(difference < 0){
             //set_warmerORcolder(-1)
             set_tempColour('blue')
-            if(difference < 3){
+            if(difference < -3){
                 set_warmerORcolder_str("feels a lot colder")
 
             }else{
-                set_warmerORcolder_str("feels a little colder")
+                set_warmerORcolder_str("feels a little bit colder")
             }          
         }
         //warmer
