@@ -14,7 +14,7 @@ import { Difference, X } from '@mui/icons-material';
 //const API_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 const API_key = "key=AGX6UGDFKCDXBXR42836HWC4L";
 
-const WeatherCard_02 = () => {
+const WeatherCard_pretty = () => {
 
     //weather data states
     let [curr_location, setLocation] = useState('London');
@@ -135,22 +135,25 @@ const WeatherCard_02 = () => {
     return(
         <div>
             <h2 style={{ textAlign: 'center' }}>{today_data.datetime}</h2>
-            <select value={curr_location} onChange={handel_locationSelection}>
-                <option value="London">London</option>
-                <option value="Amsterdam">Amsterdam</option>
-                <option value="Sydney">Sydney</option>
-            </select>
-            <h1>Weather for {curr_location} </h1>
-            <h2 style={{color: temp_colour}}> {warmer_or_colder_str} than yesterday</h2>
+
+            <div className='select'>
+                <select value={curr_location} onChange={handel_locationSelection}>
+                    <option value="London">London</option>
+                    <option value="Amsterdam">Amsterdam</option>
+                    <option value="Sydney">Sydney</option>
+                </select>
+            </div>
 
             <h2 style={{ textAlign: 'center' }}>{convert_to_Celcius(today_data.temp)} degrees</h2>
             
             <div className="image-container">
                 <img src={icon_svg} style={{ height: 80, width: 80}} alt="clouds icon"/>
-            </div>            
+            </div>              
+            <h3 style={{color: temp_colour}}> {warmer_or_colder_str} than yesterday</h3>
+                      
         </div>
     )
 
 };
 
-export default WeatherCard_02;
+export default WeatherCard_pretty;

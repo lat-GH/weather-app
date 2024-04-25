@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,7 +35,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .wrapper {
   width: fit-content;
@@ -51,6 +51,12 @@
 }
 
 .image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.select{
   display: flex;
   justify-content: center;
   align-items: center;
