@@ -35,6 +35,7 @@ const WeatherCard_pretty = () => {
         const response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${curr_location}?unitGroup=us&include=days&${API_key}&contentType=json`)
         const data = await response.json()
         
+        
         const response02 = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${curr_location}/yesterday?unitGroup=us&${API_key}&contentType=json`)
         const data02 = await response02.json()
 
